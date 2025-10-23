@@ -18,6 +18,7 @@ function App() {
     const interval = setInterval(fetchMetrics, 5000);
     return () => clearInterval(interval);
   }, []);
+  
 
   if (!metrics || metrics.length === 0) return <div className="p-4">Cargando métricas...</div>;
 
