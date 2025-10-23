@@ -19,8 +19,6 @@ function App() {
     return () => clearInterval(interval)
   }, [])
 
-  // console.log("xd")
-
   if (!metrics || metrics.length === 0)
     return <div className="p-4">Cargando métricas...</div>
 
