@@ -1,6 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
-import App from "../App";
+import {
+  createFileRoute,
+  FileRoutesByPath,
+  Navigate,
+} from '@tanstack/react-router'
+import ROUTES from '../constants/allRoutes'
 
-export const Route = createFileRoute("/")({
-  component: App,
-});
+export const Route = createFileRoute(
+  ROUTES.MAIN_ROUTE as keyof FileRoutesByPath
+)({
+  component: () => <Navigate to={ROUTES.DASHBOARD} />,
+})

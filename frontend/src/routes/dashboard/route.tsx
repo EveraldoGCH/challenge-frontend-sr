@@ -1,6 +1,14 @@
-import { useEffect, useState, useRef } from 'react'
+import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
+import ROUTES from '../../constants/allRoutes'
+import { useEffect, useRef, useState } from 'react'
 
-function App() {
+export const Route = createFileRoute(
+  ROUTES.DASHBOARD as keyof FileRoutesByPath
+)({
+  component: Dashboard,
+})
+
+function Dashboard() {
   const [metrics, setMetrics] = useState<any[] | undefined>(undefined)
   const hasFetched = useRef(false)
 
@@ -24,7 +32,9 @@ function App() {
 
   return (
     <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-bold text-white">📊 Dashboard de Métricas</h1>
+      <h1 className="text-2xl font-bold text-white">
+        📊 Dashboard de Métricas
+      </h1>
       <div className="space-y-6">
         {metrics.map((metric, index) => (
           <div key={index} className="border-b pb-4">
@@ -59,5 +69,3 @@ function App() {
     </div>
   )
 }
-
-export default App
