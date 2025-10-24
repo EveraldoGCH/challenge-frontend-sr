@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef } from 'react'
 
 function App() {
-  const [metrics, setMetrics] = useState(null)
+  const [metrics, setMetrics] = useState<any[]>([])
   const hasFetched = useRef(false)
 
   useEffect(() => {

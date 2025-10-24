@@ -11,7 +11,8 @@ module.exports = defineConfig([
       sourceType: 'module',
       parserOptions: {
         ecmaFeatures: {
-          jsx: true,
+          jsx: 'react-jsx',
+          tsx: 'react-jsx-tsx',
         },
       },
       globals: {
