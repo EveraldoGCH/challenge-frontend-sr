@@ -9,9 +9,14 @@ export default defineConfig({
     tanstackRouter({
       target: 'react',
       autoCodeSplitting: true,
-    }) as PluginOption,
+    }) as unknown as PluginOption,
     react()
   ],
+  resolve: {
+    alias: {
+      '@': '/src',
+    },
+  },
   server: {
     port: 5173,
   },
