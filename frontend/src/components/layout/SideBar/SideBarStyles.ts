@@ -11,6 +11,7 @@ export const SideNavCont = styled(Paper)(({ theme}) => ({
     border: `1px solid ${theme.palette.divider}`,
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'space-between',
     height: 'calc(100% - 16px)',
     width: '100%',
     maxWidth: SIDE_BAR_WIDTH,
@@ -77,3 +78,42 @@ export const ChildrenContainer = styled(Box)(({ theme }) => ({
         marginLeft: SIDE_BAR_WIDTH,
     },
 }));
+
+
+export const CustomButton = styled("button")<{ isActive: boolean }>`
+  background-color: rgba(0, 0, 0, 0.05);
+  border-radius: 6px;
+  width: fit-content;
+  padding: 0px 8px;
+  cursor: pointer;
+  border: ${({ isActive }) =>
+    isActive ? "1px solid " + colors.primaryLight : "none"};
+  background-color: ${({ isActive }) =>
+    isActive ? colors.primaryLighter : "transparent"};
+  color: ${({ isActive }) =>
+    isActive ? colors.primaryMain : colors.textSecondary};
+  height: 100%;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  transition: all 0.2s ease-in-out;
+
+  outline: none !important;
+  &:active {
+    border: none;
+    outline: none !important;
+    box-shadow: none !important;
+  }
+`;
+
+
+export const ButtonContainer = styled(Box)`
+  display: flex;
+  align-items: center;
+  width: 96px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid ${colors.borderMain};
+`;

@@ -19,4 +19,8 @@ export const colors = {
   errorMain: '#C62828',
   errorLight: '#FFE2DE',
   errorDark: '#8E2626',
+
+  //BORDER
+  borderMain: "#EBE9E6",
+
 }
