@@ -11,9 +11,9 @@ export const SideNavCont = styled(Paper)(({ theme}) => ({
     border: `1px solid ${theme.palette.divider}`,
     display: 'flex',
     flexDirection: 'column',
-    height: 'calc(100% - 16px)',
-    maxWidth: SIDE_BAR_WIDTH,
+    height: '100%',
     width: '100%',
+    maxWidth: SIDE_BAR_WIDTH,
     transition: `0.1s ease`,
     left: 0,
     position: 'fixed',
@@ -21,9 +21,6 @@ export const SideNavCont = styled(Paper)(({ theme}) => ({
     margin: '8px 0px 8px 8px',
     borderRadius: '12px',
     padding: '16px',
-    [theme.breakpoints.down('lg')]: {
-        width: '230px',
-    },
 }));
 
 export const LogoTopbarCont = styled(Box)<{ focused: boolean }>(({ focused }) => ({
@@ -68,15 +65,15 @@ export const ListItemNav = styled(Box)<{
     },
 }));
 
-export const ChildrenCont = styled(Box)(({ theme }) => ({
-    marginLeft: `calc(${SIDE_BAR_WIDTH} + 10px)`,
-    padding: `0px 96px 48px 96px`,
-    width: `calc(100% - ${SIDE_BAR_WIDTH})`,
+export const ChildrenContainer = styled(Box)(({ theme }) => ({
+    marginLeft: `calc(${SIDE_BAR_WIDTH})`,
+    padding: `0px 48px 48px 48px`,
+    width: `calc(100vw - ${SIDE_BAR_WIDTH} - 16px)`,
     display: 'flex',
     alignItems: 'flex-start',
     justifyContent: 'center',
     [theme.breakpoints.down('lg')]: {
-        padding: '32px 24px 48px 24px',
+        // padding: '32px 24px 48px 24px',
         marginLeft: SIDE_BAR_WIDTH,
     },
 }));

@@ -1,5 +1,5 @@
 import { colors } from '@/constants/colors'
-import { ChildrenCont, SideNavCont } from './SideBarStyles'
+import { ChildrenContainer, SideNavCont } from './SideBarStyles'
 
 const SideBar = ({
   children,
@@ -8,14 +8,16 @@ const SideBar = ({
   children?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) => {
   return (
-    <SideNavCont {...props} elevation={1}>
+    <>
+      <SideNavCont {...props}>
         <img
           src={'./src/assets/colppyLogo.svg'}
           alt="Logo"
           style={{ width: '128px', color: colors.primaryMain }}
         />
-      <ChildrenCont>{children}</ChildrenCont>
-    </SideNavCont>
+      </SideNavCont>
+      <ChildrenContainer>{children}</ChildrenContainer>
+    </>
   )
 }
 
