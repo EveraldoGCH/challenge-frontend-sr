@@ -9,6 +9,7 @@ export const colors = {
   textPrimary: '#1B1B1B',
   textSecondary: '#616161',
   textTerciary: '#979797',
+  textDisabled: "#BEBEBE",
 
   //GREY
   greyLight: '#F2F4F7',

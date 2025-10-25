@@ -11,7 +11,7 @@ export const SideNavCont = styled(Paper)(({ theme}) => ({
     border: `1px solid ${theme.palette.divider}`,
     display: 'flex',
     flexDirection: 'column',
-    height: '100%',
+    height: 'calc(100% - 16px)',
     width: '100%',
     maxWidth: SIDE_BAR_WIDTH,
     transition: `0.1s ease`,
