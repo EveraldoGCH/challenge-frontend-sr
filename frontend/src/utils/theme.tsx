@@ -18,7 +18,6 @@ declare module "@mui/material/styles" {
 
 const customThemeOptions: ThemeOptions = createTheme({
   components: {
-    
     MuiButton: {
       styleOverrides: {
         root: {
@@ -113,7 +112,6 @@ const customThemeOptions: ThemeOptions = createTheme({
             backgroundColor: "#E1DFDC",
             transition: "background-color 0.3s ease",
           },
-
           "&.Mui-disabled": {
             background: "transparent",
           },
@@ -345,7 +343,7 @@ const customThemeOptions: ThemeOptions = createTheme({
       },
     },
     MuiTypography: {
-      defaultProps: { color: "text.primary" },
+      defaultProps: { color: colors.textPrimary },
     },
     MuiTooltip: {
       styleOverrides: {
@@ -374,17 +372,14 @@ const customThemeOptions: ThemeOptions = createTheme({
   typography: {
     fontFamily: "Inter, sans-serif",
     h1: {
-      fontSize: defaultTheme.typography.pxToRem(32),
+      fontSize: defaultTheme.typography.pxToRem(56),
       fontWeight: 500,
-      lineHeight: "40px",
+      lineHeight: "64px",
       letterSpacing: "-1px",
-      fontStretch: "normal",
-      fontStyle: "normal",
-      flexGrow: 0,
-      color: "#1B1B1B",
+      color: colors.textPrimary,
     },
     h2: {
-      fontSize: defaultTheme.typography.pxToRem(20),
+      fontSize: defaultTheme.typography.pxToRem(32),
       fontWeight: 500,
       lineHeight: "32px",
       letterSpacing: "-1px",
@@ -403,7 +398,6 @@ const customThemeOptions: ThemeOptions = createTheme({
       color: "#1B1B1B",
     },
     subtitle1: {
-    
       fontSize: defaultTheme.typography.pxToRem(14),
       fontWeight: 400,
       lineHeight: "20px",

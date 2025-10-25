@@ -32,7 +32,7 @@ function Dashboard() {
     return <div className="p-4">Cargando métricas...</div>
 
   return (
-    <PageLayout title="Dashboard">
+    <PageLayout title="Inicio">
     <div className="p-6 space-y-4">
       <h1 className="text-2xl font-bold text-white">
         📊 Dashboard de Métricas

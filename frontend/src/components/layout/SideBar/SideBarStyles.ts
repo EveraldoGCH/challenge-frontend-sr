@@ -67,7 +67,7 @@ export const ListItemNav = styled(Box)<{
 
 export const ChildrenContainer = styled(Box)(({ theme }) => ({
     marginLeft: `calc(${SIDE_BAR_WIDTH})`,
-    padding: `0px 48px 48px 48px`,
+    padding: `12px 48px 48px 48px`,
     width: `calc(100vw - ${SIDE_BAR_WIDTH} - 16px)`,
     display: 'flex',
     alignItems: 'flex-start',
