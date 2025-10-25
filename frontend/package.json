@@ -17,6 +17,7 @@
     "@mui/material": "^7.3.4",
     "@tanstack/react-router": "^1.133.27",
     "@tanstack/react-router-devtools": "^1.133.27",
+    "currency.js": "^2.0.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },

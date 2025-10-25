@@ -2,6 +2,8 @@ import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 import ROUTES from '../../constants/allRoutes'
 import { useEffect, useRef, useState } from 'react'
 import PageLayout from '@/components/layout/PageLayout/PageLayout'
+import { Box } from '@mui/material'
+import { HomeCard } from './_components/HomeCard'
 
 export const Route = createFileRoute(
   ROUTES.DASHBOARD as keyof FileRoutesByPath
@@ -33,42 +35,28 @@ function Dashboard() {
 
   return (
     <PageLayout title="Inicio">
-    <div className="p-6 space-y-4">
-      <h1 className="text-2xl font-bold text-white">
-        📊 Dashboard de Métricas
-      </h1>
-      <div className="space-y-6">
-        {metrics.map((metric, index) => (
-          <div key={index} className="border-b pb-4">
-            <h3 className="text-lg font-semibold mb-2">
-              Registro #{index + 1}
-            </h3>
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white p-4 shadow rounded">
-                <h2 className="font-semibold">Usuarios Activos</h2>
-                <p className="text-xl">{metric.activeUsers}</p>
-              </div>
-              <div className="bg-white p-4 shadow rounded">
-                <h2 className="font-semibold">Ingresos</h2>
-                <p className="text-xl">${metric.revenue}</p>
-              </div>
-              <div className="bg-white p-4 shadow rounded">
-                <h2 className="font-semibold">Churn</h2>
-                <p
-                  className={
-                    metric.churnRate > 0.05
-                      ? 'text-red-500 text-xl'
-                      : 'text-green-600 text-xl'
-                  }
-                >
-                  {(metric.churnRate * 100).toFixed(2)}%
-                </p>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+      <>
+        <Box className="flex w-full justify-between">
+          <HomeCard
+            title="Total de cobros"
+            amount={metrics.length}
+            summedAmount={1000}
+            isLoading={false}
+          />
+          <HomeCard
+            title="Total de cobros"
+            amount={metrics.length}
+            summedAmount={1000}
+            isLoading={false}
+          />
+          <HomeCard
+            title="Total de cobros"
+            amount={metrics.length}
+            summedAmount={1000}
+            isLoading={false}
+          />
+        </Box>
+      </>
     </PageLayout>
   )
 }
