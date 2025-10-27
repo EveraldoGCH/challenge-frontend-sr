@@ -8,6 +8,8 @@ import { useMemo } from 'react'
 import { ItemSideBar } from './components/ItemSideBar'
 import { ChildrenContainer, SideNavCont } from './SideBarStyles'
 import { SideBarItem } from './type'
+import logoSmall from '@/assets/images/colppySmall.jpg'
+import logo from '@/assets/images/colppyLogo.svg'
 import { useNotificationsContext } from '@/components/providers/NotificationsProvider/useNotificationsContext'
 
 const sideBarItemsBlock1: SideBarItem[] = [
@@ -66,13 +68,13 @@ const SideBar = ({
           <div className="flex items-center w-full">
             {isSmallScreen ? (
               <img
-                src={'/images/colppySmall.jpg'}
+                src={logoSmall}
                 alt="Logo"
                 style={{ width: '48px', color: colors.primaryMain }}
               />
             ) : (
               <img
-                src={'/images/colppyLogo.svg'}
+                src={logo}
                 alt="Logo"
                 style={{ width: '128px', color: colors.primaryMain }}
               />
