@@ -44,8 +44,12 @@ function Dashboard() {
         onChange={handleChangeTab}
         style={{ fontVariant: 'h1' }}
       >
-        {Object.values(MetricsRegions).map((tab, index) => (
-          <CustomTab key={tab} label={tabStatusMap[tab]} {...tabProps(index)} />
+        {Object.values(MetricsRegions).map((region, index) => (
+          <CustomTab
+            key={region + 'tab'}
+            label={tabStatusMap[region]}
+            {...tabProps(index)}
+          />
         ))}
         {/* <CustomTab label="Pendientes" {...tabProps(0)} />
         <CustomTab label="Completados" {...tabProps(1)} />
