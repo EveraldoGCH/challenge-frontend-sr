@@ -52,10 +52,7 @@ const customThemeOptions: ThemeOptions = createTheme({
             color: colors.textDisabled,
             border: `1px solid #BEBEBE`,
           },
-          '&.loading-true': {
-            backgroundColor: 'rgba(27, 27, 27, 0.20)',
-            border: `1px solid ${colors.textPrimary}`,
-          },
+
           '&.MuiButton-colorPrimary': {
             background: 'transparent',
             border: `1px solid ${colors.textPrimary}`,
@@ -73,11 +70,6 @@ const customThemeOptions: ThemeOptions = createTheme({
               color: colors.textDisabled,
               border: `1px solid ${colors.textDisabled}`,
             },
-            '&.loading-true': {
-              backgroundColor: 'rgba(27, 27, 27, 0.10)',
-              boxShadow: 'none',
-              border: `1px solid ${colors.textPrimary}`,
-            },
           },
           '&.MuiButton-colorError': {
             border: `1px solid #D42D35 !important`,
@@ -93,11 +85,6 @@ const customThemeOptions: ThemeOptions = createTheme({
               background: colors.greyLight,
               color: colors.textDisabled,
               border: `1px solid #BEBEBE`,
-            },
-            '&.loading-true': {
-              backgroundColor: 'rgba(212, 45, 53, 0.20)',
-              boxShadow: 'none',
-              border: `1px solid #D42D35`,
             },
           },
         },
@@ -115,9 +102,6 @@ const customThemeOptions: ThemeOptions = createTheme({
           '&.Mui-disabled': {
             background: 'transparent',
           },
-          '&.loading-true': {
-            backgroundColor: 'rgba(27, 27, 27, 0.20)',
-          },
           '&.MuiButton-colorError': {
             color: '#D42D35',
             '& .MuiCircularProgress-root': {
@@ -130,24 +114,15 @@ const customThemeOptions: ThemeOptions = createTheme({
               background: 'transparent',
               color: '#BEBEBE',
             },
-            '&.loading-true': {
-              backgroundColor: 'rgba(212, 45, 53, 0.20)',
-            },
           },
         },
         contained: ({ theme }) => ({
           fill: theme.palette.primary.contrastText,
+          backgroundColor: '#444CE7',
+
           borderRadius: '6px',
           '& .MuiCircularProgress-root': {
             color: 'white',
-          },
-          '&.loading-true': {
-            backgroundColor: colors.primaryMain,
-            boxShadow: 'none',
-          },
-          '&:hover': {
-            backgroundColor: colors.primaryMain,
-            boxShadow: 'none',
           },
           '&.MuiButton-colorSecondary': {
             backgroundColor: colors.greyLight,
@@ -162,18 +137,6 @@ const customThemeOptions: ThemeOptions = createTheme({
             },
             '& .MuiCircularProgress-root': {
               color: 'black',
-            },
-          },
-          '&.MuiButton-colorError': {
-            backgroundColor: '#D42D35',
-            color: 'white',
-            '&.Mui-disabled': {
-              background: colors.greyLight,
-              color: colors.textDisabled,
-            },
-            '&.loading-true': {
-              backgroundColor: '#D42D35',
-              boxShadow: 'none',
             },
           },
         }),

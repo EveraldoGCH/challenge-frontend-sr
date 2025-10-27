@@ -40,11 +40,15 @@ function ToolTipItem({
     <Box display={'flex'} justifyContent={'space-between'}>
       <div style={{ display: 'flex', gap: '4px', alignItems: 'center' }}>
         {icon}
-        <Typography variant="body1" fontSize={'12px'} color={'white'}>
+        <Typography
+          variant="body1"
+          fontSize={'12px'}
+          color={colors.textDisabled}
+        >
           {text}
         </Typography>
       </div>
-      <Typography variant="body2" fontSize={'12px'} color={'white'}>
+      <Typography variant="body2" fontSize={'12px'} color={colors.textDisabled}>
         {text2}
       </Typography>
     </Box>
@@ -76,7 +80,7 @@ export function TooltipChart({
                 <AccountCircleOutlinedIcon
                   width="14px"
                   height="14px"
-                  style={{ color: 'white' }}
+                  style={{ color: colors.textDisabled }}
                 />
               }
               text="Usuarios activos"

@@ -66,7 +66,7 @@ const icons: Record<VariantColors, ReactNode> = {
   ),
 }
 
-export interface NotificationProps {
+export interface ModalNotificationProps {
   content: {
     title?: string
     message?: string
@@ -91,13 +91,12 @@ export interface NotificationProps {
     closeBtn?: boolean
     children?: ReactNode
     icon?: ReactNode
-    customFirtsColor?: string
-    customSecondColor?: string
   }
-  id: string
+  open: boolean
+  onClose: () => void
 }
 
-const Notification = (props: NotificationProps) => {
+const Notification = (props: ModalNotificationProps) => {
   const {
     content: {
       title,
@@ -108,38 +107,25 @@ const Notification = (props: NotificationProps) => {
       button2,
       children,
       icon,
-      customFirtsColor,
-      customSecondColor,
     },
-    // id,
+    open,
+    onClose,
   } = props
-
-  const closeNotifications = () => {
-    // toast.remove(id);
-  }
 
   const Icon = icon ? icon : icons[variant]
 
   return (
     <ModalBase
-      open
-      onClose={() => {}}
+      open={open}
+      onClose={onClose}
       maxWidth="xs"
-      wrapperPading="64px 32px 32px 32px"
+      wrapperPading="32px"
       fullWidth
     >
       <Stack alignItems={'center'}>
         <IconContainer
-          firstColor={
-            customFirtsColor
-              ? customFirtsColor
-              : variantColorsFirstColor[variant]
-          }
-          secondColor={
-            customSecondColor
-              ? customSecondColor
-              : variantColorsSecondColor[variant]
-          }
+          firstColor={variantColorsFirstColor[variant]}
+          secondColor={variantColorsSecondColor[variant]}
           size="extra-large"
         >
           {Icon}
@@ -178,7 +164,7 @@ const Notification = (props: NotificationProps) => {
               size="large"
               onClick={() => {
                 button2.onClick()
-                closeNotifications()
+                onClose()
               }}
               sx={{ width: button2 ? '50%' : 'auto' }}
               endIcon={button2.endIcon}
@@ -195,7 +181,7 @@ const Notification = (props: NotificationProps) => {
               sx={{ width: button2 ? '50%' : 'auto' }}
               onClick={() => {
                 button1.onClick()
-                closeNotifications()
+                onClose()
               }}
               endIcon={button1.endIcon}
               startIcon={button1.startIcon}
@@ -207,7 +193,7 @@ const Notification = (props: NotificationProps) => {
           {closeBtn && (
             <Button
               variant="contained"
-              onClick={closeNotifications}
+              onClick={onClose}
               fullWidth
               size="large"
             >

@@ -8,6 +8,7 @@ import { useMemo } from 'react'
 import { ItemSideBar } from './components/ItemSideBar'
 import { ChildrenContainer, SideNavCont } from './SideBarStyles'
 import { SideBarItem } from './type'
+import { useNotificationsContext } from '@/components/providers/NotificationsProvider/useNotificationsContext'
 
 const sideBarItemsBlock1: SideBarItem[] = [
   {
@@ -24,6 +25,7 @@ const SideBar = ({
 }: {
   children?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) => {
+  const { modalNotify } = useNotificationsContext()
   const sideBarItemsBlock2: SideBarItem[] = useMemo(
     () => [
       {
@@ -35,11 +37,24 @@ const SideBar = ({
       {
         icon: <ExitToAppIcon color="error" />,
         name: 'Salir',
-        onClick: () => {},
+        onClick: () =>
+          modalNotify({
+            title: 'Salir',
+            message: '¿Estás seguro de querer salir?',
+            variant: 'error',
+            button1: {
+              text: 'Salir',
+              onClick: () => {},
+            },
+            button2: {
+              text: 'Cancelar',
+              onClick: () => {},
+            },
+          }),
         path: '',
       },
     ],
-    []
+    [modalNotify]
   )
 
   return (

@@ -2,6 +2,7 @@
 import MaterialUIThemeProvider from './MaterialUIThemeProvider'
 import React, { useState } from 'react'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { NotificationsContextProvider } from './NotificationsProvider/NotificationsContextProvider'
 
 export default function AllProviders({
   children,
@@ -23,7 +24,11 @@ export default function AllProviders({
 
   return (
     <MaterialUIThemeProvider>
-      <QueryClientProvider client={queryClient}>{children}</QueryClientProvider>
+      <NotificationsContextProvider>
+        <QueryClientProvider client={queryClient}>
+          {children}
+        </QueryClientProvider>
+      </NotificationsContextProvider>
     </MaterialUIThemeProvider>
   )
 }
