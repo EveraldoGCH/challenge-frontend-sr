@@ -10,9 +10,7 @@
     "dev": "concurrently \"cd frontend && npm run dev\" \"cd api && npm run dev\"",
     "build": "concurrently \"cd frontend && npm run build\" \"cd api && npm run build\"",
     "lint": "concurrently \"cd frontend && npm run lint\" \"cd api && npm run lint\"",
-    "format": "concurrently \"cd frontend && npm run format\" \"cd api && npm run format\"",
-    "prepare": "husky"
-  },
+    "format": "concurrently \"cd frontend && npm run format\" \"cd api && npm run format\""  },
   "devDependencies": {
     "@eslint/js": "^9.38.0",
     "@typescript-eslint/eslint-plugin": "^8.46.2",
