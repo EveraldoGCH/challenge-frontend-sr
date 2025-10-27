@@ -347,6 +347,15 @@ const customThemeOptions: ThemeOptions = createTheme({
         },
       },
     },
+    MuiTypography: {
+      styleOverrides: {
+        root: {
+          overflow: 'hidden',
+          textOverflow: 'ellipsis',
+          whiteSpace: 'nowrap',
+        },
+      },
+    },
   },
   typography: {
     fontFamily:
@@ -421,6 +430,15 @@ const customThemeOptions: ThemeOptions = createTheme({
     },
     disabled: {
       main: colors.textDisabled,
+    },
+  },
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
     },
   },
 })

@@ -1,5 +1,9 @@
 import { colors } from '@/constants/colors'
-import { SIDE_BAR_WIDTH } from '@/constants/constants'
+import {
+  SIDE_BAR_WIDTH_XL,
+  SIDE_BAR_WIDTH_LG,
+  SIDE_BAR_WIDTH_MD,
+} from '@/constants/constants'
 import { Box, Paper } from '@mui/material'
 import { styled } from '@mui/material/styles'
 
@@ -12,7 +16,7 @@ export const SideNavCont = styled(Paper)(({ theme }) => ({
   justifyContent: 'space-between',
   height: 'calc(100% - 16px)',
   width: '100%',
-  maxWidth: SIDE_BAR_WIDTH,
+  maxWidth: SIDE_BAR_WIDTH_XL,
   transition: `0.1s ease`,
   left: 0,
   position: 'fixed',
@@ -20,6 +24,12 @@ export const SideNavCont = styled(Paper)(({ theme }) => ({
   margin: '8px 0px 8px 8px',
   borderRadius: '12px',
   padding: '16px',
+  [theme.breakpoints.down('lg')]: {
+    maxWidth: SIDE_BAR_WIDTH_LG,
+  },
+  [theme.breakpoints.down('md')]: {
+    maxWidth: SIDE_BAR_WIDTH_MD,
+  },
 }))
 
 export const LogoTopbarCont = styled(Box)<{ focused: boolean }>(
@@ -69,14 +79,20 @@ export const ListItemSideBar = styled(Box)<{
 }))
 
 export const ChildrenContainer = styled(Box)(({ theme }) => ({
-  marginLeft: `calc(${SIDE_BAR_WIDTH})`,
+  marginLeft: `calc(${SIDE_BAR_WIDTH_XL} + 8px)`,
   padding: `12px 48px 48px 48px`,
-  width: `calc(100vw - ${SIDE_BAR_WIDTH} - 16px)`,
+  width: `calc(100% - ${SIDE_BAR_WIDTH_XL} - 48px)`,
   display: 'flex',
   alignItems: 'flex-start',
   justifyContent: 'center',
   [theme.breakpoints.down('lg')]: {
-    // padding: '32px 24px 48px 24px',
-    marginLeft: SIDE_BAR_WIDTH,
+    padding: '12px 24px 24px 24px',
+    marginLeft: `calc(${SIDE_BAR_WIDTH_LG} + 8px)`,
+    width: `calc(100% - ${SIDE_BAR_WIDTH_LG} - 24px)`,
+  },
+  [theme.breakpoints.down('md')]: {
+    padding: '12px 24px 24px 24px',
+    marginLeft: `calc(${SIDE_BAR_WIDTH_MD} + 8px)`,
+    width: `calc(100% - ${SIDE_BAR_WIDTH_MD} - 24px)`,
   },
 }))

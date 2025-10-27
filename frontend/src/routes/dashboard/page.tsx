@@ -50,7 +50,8 @@ function Dashboard() {
           />
         ))}
       </Tabs>
-      <Box className="flex w-full justify-between">
+      <ChartContainerDashboard />
+      <Box className="flex w-full justify-between flex-wrap">
         <HomeCard
           title={`Nuevo${sReturn(totalNewUsers ?? 0)} usuario${sReturn(totalNewUsers ?? 0)}`}
           value={totalNewUsers}
@@ -68,7 +69,6 @@ function Dashboard() {
           type="percentage"
         />
       </Box>
-      <ChartContainerDashboard />
     </>
   )
 }

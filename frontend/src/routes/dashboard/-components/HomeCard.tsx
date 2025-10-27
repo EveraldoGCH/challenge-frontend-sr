@@ -48,7 +48,7 @@ export function HomeCard({
         </Typography>
       }
     >
-      <div className="flex items-center gap-1">
+      <div className="flex items-center gap-1 min-w-[240px]">
         {amount && <Typography variant="h1">$</Typography>}
         {(value || amount) && (
           <NumberFlow
