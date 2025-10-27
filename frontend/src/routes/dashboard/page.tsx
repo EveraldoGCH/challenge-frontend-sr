@@ -10,14 +10,12 @@ export const Route = createFileRoute(
   component: Dashboard,
 })
 
-function tabProps(index: number) {
-  return {
-    id: `simple-tab-${index}`,
-    'aria-controls': `simple-tabpanel-${index}`,
-  }
-}
-
-console.log('tabProps', tabProps(1))
+// function tabProps(index: number) {
+//   return {
+//     id: `simple-tab-${index}`,
+//     'aria-controls': `simple-tabpanel-${index}`,
+//   }
+// }
 
 function Dashboard() {
   const { metrics, isLoadingMetrics } = useDashboardContext()
