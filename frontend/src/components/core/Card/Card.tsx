@@ -46,7 +46,6 @@ export function Card({
   subtitle,
   rightComponent,
 }: CardProps): React.JSX.Element {
-
   const baseStyles: React.CSSProperties = {
     height: height,
     padding: padding ? padding : '24px',
@@ -99,7 +98,9 @@ export function Card({
             {rightComponent}
           </div>
         )}
-        <Stack gap={stackGap}>{children}</Stack>
+        <Stack gap={stackGap} height={height}>
+          {children}
+        </Stack>
       </div>
     )
   } else {

@@ -5,6 +5,7 @@ import { Box, Tab, Tabs } from '@mui/material'
 import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 import { HomeCard } from './-components/HomeCard'
 import { useDashboardContext } from './-context/useDashboardContext'
+import { ChartContainerDashboard } from './-components/ChartContainerDashboard'
 
 export const Route = createFileRoute(
   (ROUTES.DASHBOARD + '/') as keyof FileRoutesByPath
@@ -69,6 +70,7 @@ function Dashboard() {
           type="percentage"
         />
       </Box>
+      <ChartContainerDashboard />
     </>
   )
 }

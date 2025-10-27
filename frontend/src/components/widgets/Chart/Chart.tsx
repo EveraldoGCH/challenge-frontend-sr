@@ -7,10 +7,11 @@ import {
   AreaChart,
   CartesianGrid,
   ResponsiveContainer,
+  Tooltip,
   XAxis,
   YAxis,
 } from 'recharts'
-import './Chart.css'
+import { TooltipChart } from './ToolTipChart'
 
 interface DotProps {
   hover?: boolean
@@ -37,9 +38,9 @@ function Dot({
 
 function formatYAxis(num: number): string {
   if (num >= 1000000) {
-    return formatCurrency(num / 1000000, { precision: 0 }) + 'M'
+    return formatCurrency(num / 1000000, { precision: 0, symbol: '' }) + 'M'
   } else if (num >= 1000) {
-    return formatCurrency(num / 1000, { precision: 0 }) + 'K'
+    return formatCurrency(num / 1000, { precision: 0, symbol: '' }) + 'K'
   }
   return num.toString()
 }
@@ -49,7 +50,7 @@ export const Chart = memo(
     data,
     loadingData = false,
   }: {
-    data: { name: string; value: number; shortedValue: number }[]
+    data: { name: string; value: number }[]
     loadingData?: boolean
   }): React.JSX.Element => {
     let dataForLoading = [
@@ -116,13 +117,13 @@ export const Chart = memo(
             dataKey="name"
             tickLine={loadingData}
             type="category"
-            interval={Math.floor(data.length / 5) - 1}
+            interval={Math.floor(data.length / 7) - 1}
             padding={{ left: 12, right: 0 }}
             fontSize={'14px'}
           />
           <YAxis
             axisLine={false}
-            dataKey={'shortedValue'}
+            dataKey={'value'}
             tickLine={loadingData}
             type="number"
             tickFormatter={val => (!loadingData ? formatYAxis(val) : '')}
@@ -139,13 +140,13 @@ export const Chart = memo(
             strokeWidth={3}
             type="linear"
           />
-          {/* {!loadingData && (
+          {!loadingData && (
             <Tooltip
               animationDuration={100}
               content={<TooltipChart />}
               cursor={false}
             />
-          )} */}
+          )}
         </AreaChart>
       </ResponsiveContainer>
     )
