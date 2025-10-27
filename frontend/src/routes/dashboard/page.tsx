@@ -2,13 +2,20 @@ import ROUTES from '@/constants/allRoutes'
 import { Box } from '@mui/material'
 import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
 import { HomeCard } from './_components/HomeCard'
-import { useDashboardContext } from './context/useDashboardContext'
+import { useDashboardContext } from './_context/useDashboardContext'
 
 export const Route = createFileRoute(
   (ROUTES.DASHBOARD + '/') as keyof FileRoutesByPath
 )({
   component: Dashboard,
 })
+
+function tabProps(index: number) {
+  return {
+    id: `simple-tab-${index}`,
+    'aria-controls': `simple-tabpanel-${index}`,
+  }
+}
 
 function Dashboard() {
   const { metrics, isLoadingMetrics } = useDashboardContext()

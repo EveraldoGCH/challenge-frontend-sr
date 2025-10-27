@@ -1,17 +1,34 @@
 import axiosInstance from '@/utils/axiosInstance'
 
 export interface MetricsResponse {
-  timestamp: string
-  activeUsers: number
-  newUsers: number
-  revenue: number
-  churnRate: number
-  byRegion: {
-    US: number
-    EU: number
-    LATAM: number
-    APAC: number
-  }
+   US: {
+    timestamp: string
+    activeUsers: number
+    newUsers: number
+    revenue: number
+    churnRate: number
+   }
+   EU: {
+    timestamp: string
+    activeUsers: number
+    newUsers: number
+    revenue: number
+    churnRate: number
+   }
+   LATAM: {
+    timestamp: string
+    activeUsers: number
+    newUsers: number
+    revenue: number
+    churnRate: number
+   }
+   APAC: {
+    timestamp: string
+    activeUsers: number
+    newUsers: number
+    revenue: number
+    churnRate: number
+   }
 }
 
 export const getMetricsService = async (): Promise<MetricsResponse[]> => {
