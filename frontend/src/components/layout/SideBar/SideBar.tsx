@@ -66,13 +66,13 @@ const SideBar = ({
           <div className="flex items-center w-full">
             {isSmallScreen ? (
               <img
-                src={'./src/assets/colppySmall.jpg'}
+                src={'/images/colppySmall.jpg'}
                 alt="Logo"
                 style={{ width: '48px', color: colors.primaryMain }}
               />
             ) : (
               <img
-                src={'./src/assets/colppyLogo.svg'}
+                src={'/images/colppyLogo.svg'}
                 alt="Logo"
                 style={{ width: '128px', color: colors.primaryMain }}
               />
