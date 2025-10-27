@@ -19,12 +19,7 @@ export function ItemSideBar({ item }: Props) {
       style={pathname === path ? { backgroundColor: colors.greyLight } : {}}
       onClick={onClick}
     >
-      <Box
-        display={'flex'}
-        alignItems={'center'}
-        justifyContent={'center'}
-        gap={'8px'}
-      >
+      <Box display={'flex'} alignItems={'center'} gap={'8px'}>
         {icon}
         {!isSmallScreen && (
           <Stack>

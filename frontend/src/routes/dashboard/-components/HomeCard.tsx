@@ -20,7 +20,7 @@ interface Props {
   type?: 'value' | 'percentage'
 }
 
-const MAX_CRITICAL_PERCENTAGE = 5
+const MAX_CRITICAL_PERCENTAGE = 2
 
 export function HomeCard({
   title,

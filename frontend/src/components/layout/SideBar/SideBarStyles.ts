@@ -83,6 +83,7 @@ export const ListItemSideBar = styled(Box)<{
     color: logoutItem ? colors.errorMain : 'inherit',
   },
   [theme.breakpoints.down('sm')]: {
+    justifyContent: 'center',
     padding: '4px',
   },
 }))
