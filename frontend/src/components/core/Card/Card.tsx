@@ -57,6 +57,7 @@ export function Card({
     background: background ? background : '#fff',
     border: border ? border : '1px solid #e5e7eb',
     minHeight: '25px',
+    overflow: 'hidden',
   }
 
   if (

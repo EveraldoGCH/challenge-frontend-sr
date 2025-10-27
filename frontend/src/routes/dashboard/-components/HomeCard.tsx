@@ -1,6 +1,12 @@
 'use client'
 import { Card } from '@/components/core/Card/Card'
-import { Skeleton, Typography, useTheme } from '@mui/material'
+import {
+  Box,
+  Skeleton,
+  Typography,
+  useMediaQuery,
+  useTheme,
+} from '@mui/material'
 import NumberFlow, { continuous } from '@number-flow/react'
 import dayjs from 'dayjs'
 import { useDashboardContext } from '../-context/useDashboardContext'
@@ -25,6 +31,7 @@ export function HomeCard({
 }: Props): React.JSX.Element {
   const theme = useTheme()
   const { metricsResponse } = useDashboardContext()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('lg'))
 
   if (isLoading) {
     return (
@@ -40,7 +47,7 @@ export function HomeCard({
     <Card
       stack
       stackGap="8px"
-      width="calc(33% - 16px)"
+      width={isSmallScreen ? '100%' : 'calc(33% - 16px)'}
       title={title}
       rightComponent={
         <Typography variant="caption" color={'secondary'}>
@@ -48,20 +55,26 @@ export function HomeCard({
         </Typography>
       }
     >
-      <div className="flex items-center gap-1 min-w-[240px]">
-        {amount && <Typography variant="h1">$</Typography>}
+      <div className="flex items-center gap-1 ">
+        {amount && (
+          <Typography variant="h1" minWidth="23px">
+            $
+          </Typography>
+        )}
         {(value || amount) && (
-          <NumberFlow
-            value={value ?? amount ?? 0}
-            plugins={[continuous]}
-            style={{
-              ...theme.typography.h1,
-              ...(type === 'percentage' &&
-              (value ?? 0) > MAX_CRITICAL_PERCENTAGE
-                ? { color: colors.errorMain }
-                : {}),
-            }}
-          />
+          <Box>
+            <NumberFlow
+              value={value ?? amount ?? 0}
+              plugins={[continuous]}
+              style={{
+                ...theme.typography.h1,
+                ...(type === 'percentage' &&
+                (value ?? 0) > MAX_CRITICAL_PERCENTAGE
+                  ? { color: colors.errorMain }
+                  : {}),
+              }}
+            />
+          </Box>
         )}
         {type === 'percentage' && (
           <Typography

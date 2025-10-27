@@ -51,7 +51,7 @@ function Dashboard() {
         ))}
       </Tabs>
       <ChartContainerDashboard />
-      <Box className="flex w-full justify-between flex-wrap">
+      <Box className="flex w-full lg:justify-between md:gap-[24px] sm:gap-[24px] flex-wrap">
         <HomeCard
           title={`Nuevo${sReturn(totalNewUsers ?? 0)} usuario${sReturn(totalNewUsers ?? 0)}`}
           value={totalNewUsers}
