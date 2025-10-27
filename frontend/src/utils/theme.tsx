@@ -373,7 +373,7 @@ const customThemeOptions: ThemeOptions = createTheme({
     fontFamily:
       "Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
     h1: {
-      fontSize: defaultTheme.typography.pxToRem(56),
+      fontSize: defaultTheme.typography.pxToRem(42),
       fontWeight: 400,
       lineHeight: '64px',
       letterSpacing: '-1px',

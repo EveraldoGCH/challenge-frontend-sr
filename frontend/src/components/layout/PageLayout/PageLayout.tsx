@@ -43,7 +43,7 @@ const PageLayout = ({
         }}
       >
         <Box sx={{ flex: "1 1 auto" }}>
-          <Stack gap={"12px"}>
+          <Stack gap={"4px"}>
             {title !== "" ? (
               <Typography variant="h1">{title}</Typography>
             ) : (

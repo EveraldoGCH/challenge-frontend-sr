@@ -54,7 +54,6 @@ export function Card({
     width: width ? width : '100%',
     display: stack ? 'flex' : undefined,
     cursor: onClick ? 'pointer' : 'inherit',
-    gap: stackGap ? stackGap : stack ? '12px' : undefined,
     flexDirection: stack ? 'column' : undefined,
     background: background ? background : '#fff',
     border: border ? border : '1px solid #e5e7eb',
@@ -109,6 +108,7 @@ export function Card({
         style={{
           ...baseStyles,
           ...style,
+          gap: stackGap ? stackGap : stack ? '12px' : undefined,
         }}
         className={className}
         onClick={() => (onClick ? onClick() : {})}
