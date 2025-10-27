@@ -1,34 +1,41 @@
 import axiosInstance from '@/utils/axiosInstance'
 
+export enum MetricsRegions {
+  US = 'US',
+  EU = 'EU',
+  LATAM = 'LATAM',
+  APAC = 'APAC',
+}
+
 export interface MetricsResponse {
-   US: {
+  [MetricsRegions.US]: {
     timestamp: string
     activeUsers: number
     newUsers: number
     revenue: number
     churnRate: number
-   }
-   EU: {
+  }
+  [MetricsRegions.EU]: {
     timestamp: string
     activeUsers: number
     newUsers: number
     revenue: number
     churnRate: number
-   }
-   LATAM: {
+  }
+  [MetricsRegions.LATAM]: {
     timestamp: string
     activeUsers: number
     newUsers: number
     revenue: number
     churnRate: number
-   }
-   APAC: {
+  }
+  [MetricsRegions.APAC]: {
     timestamp: string
     activeUsers: number
     newUsers: number
     revenue: number
     churnRate: number
-   }
+  }
 }
 
 export const getMetricsService = async (): Promise<MetricsResponse[]> => {
