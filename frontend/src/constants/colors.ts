@@ -9,7 +9,7 @@ export const colors = {
   textPrimary: '#1B1B1B',
   textSecondary: '#616161',
   textTerciary: '#979797',
-  textDisabled: "#BEBEBE",
+  textDisabled: '#BEBEBE',
 
   //GREY
   greyLight: '#F2F4F7',
@@ -18,9 +18,19 @@ export const colors = {
   //ERROR
   errorMain: '#C62828',
   errorLight: '#FFE2DE',
+  errorLighter: '#FEF3F2',
   errorDark: '#8E2626',
 
-  //BORDER
-  borderMain: "#EBE9E6",
+  //SUCCESS
+  succesMain: '#2E7D32',
+  successLight: '#C2EEB5',
+  successLighter: '#F1FBED',
 
+  //WARNING
+  warningMain: '#DC6803',
+  warningLight: '#FEF0C7',
+  warningLighter: '#FFFAEB',
+
+  //BORDER
+  borderMain: '#EBE9E6',
 }

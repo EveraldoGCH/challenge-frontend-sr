@@ -4,6 +4,7 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import SettingsIcon from '@mui/icons-material/Settings'
 import { Box, Stack } from '@mui/material'
+import { useMemo } from 'react'
 import { ItemSideBar } from './components/ItemSideBar'
 import { ChildrenContainer, SideNavCont } from './SideBarStyles'
 import { SideBarItem } from './type'
@@ -17,27 +18,30 @@ const sideBarItemsBlock1: SideBarItem[] = [
   },
 ]
 
-const sideBarItemsBlock2: SideBarItem[] = [
-  {
-    icon: <SettingsIcon />,
-    name: 'Configuración',
-    onClick: () => {},
-    path: ROUTES.SETTINGS,
-  },
-  {
-    icon: <ExitToAppIcon color="error" />,
-    name: 'Salir',
-    onClick: () => {},
-    path: '',
-  },
-]
-
 const SideBar = ({
   children,
   ...props
 }: {
   children?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) => {
+  const sideBarItemsBlock2: SideBarItem[] = useMemo(
+    () => [
+      {
+        icon: <SettingsIcon />,
+        name: 'Configuración',
+        onClick: () => {},
+        path: ROUTES.SETTINGS,
+      },
+      {
+        icon: <ExitToAppIcon color="error" />,
+        name: 'Salir',
+        onClick: () => {},
+        path: '',
+      },
+    ],
+    []
+  )
+
   return (
     <>
       <SideNavCont {...props}>
