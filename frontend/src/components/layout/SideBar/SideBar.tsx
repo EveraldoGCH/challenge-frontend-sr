@@ -1,22 +1,35 @@
+import ROUTES from '@/constants/allRoutes'
 import { colors } from '@/constants/colors'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import SettingsIcon from '@mui/icons-material/Settings';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
+import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
+import SettingsIcon from '@mui/icons-material/Settings'
 import { Box, Stack } from '@mui/material'
-import {
-  ChildrenContainer,
-  CustomButton,
-  SideNavCont
-} from './SideBarStyles'
+import { ItemSideBar } from './components/ItemSideBar'
+import { ChildrenContainer, SideNavCont } from './SideBarStyles'
 import { SideBarItem } from './type'
-import { ItemSideBar } from './components/ItemSideBar';
 
-const sideBarItems: SideBarItem[] = [
+const sideBarItemsBlock1: SideBarItem[] = [
   {
-    icon: <HomeRoundedIcon  />,
+    icon: <HomeRoundedIcon />,
     name: 'Inicio',
-    onClick: () => { }
-  }
+    onClick: () => {},
+    path: ROUTES.DASHBOARD,
+  },
+]
+
+const sideBarItemsBlock2: SideBarItem[] = [
+  {
+    icon: <SettingsIcon />,
+    name: 'Configuración',
+    onClick: () => {},
+    path: ROUTES.SETTINGS,
+  },
+  {
+    icon: <ExitToAppIcon color="error" />,
+    name: 'Salir',
+    onClick: () => {},
+    path: '',
+  },
 ]
 
 const SideBar = ({
@@ -36,17 +49,14 @@ const SideBar = ({
               style={{ width: '128px', color: colors.primaryMain }}
             />
           </div>
-          {sideBarItems.map((item) => (
-            <ItemSideBar key={item.name + "item sidebar"} item={item} />
+          {sideBarItemsBlock1.map(item => (
+            <ItemSideBar key={item.name + 'item sidebar'} item={item} />
           ))}
         </Stack>
-        <Box className="flex gap-2  w-full justify-end">
-          <CustomButton isActive={true} onClick={() => {}}>
-            <SettingsIcon sx={{ color: colors.textSecondary }} />
-          </CustomButton>
-          <CustomButton isActive={false} onClick={() => {}}>
-            <ExitToAppIcon sx={{ color: colors.errorMain }} />
-          </CustomButton>
+        <Box className="flex gap-2  w-full flex-col">
+          {sideBarItemsBlock2.map(item => (
+            <ItemSideBar key={item.name + 'item sidebar'} item={item} />
+          ))}
         </Box>
       </SideNavCont>
       <ChildrenContainer>{children}</ChildrenContainer>

@@ -4,6 +4,7 @@ import { Skeleton, Typography, useTheme } from '@mui/material'
 import NumberFlow, { continuous } from '@number-flow/react'
 import dayjs from 'dayjs'
 import { useDashboardContext } from '../-context/useDashboardContext'
+import { colors } from '@/constants/colors'
 
 interface Props {
   title: string
@@ -12,6 +13,8 @@ interface Props {
   isLoading: boolean
   type?: 'value' | 'percentage'
 }
+
+const MAX_CRITICAL_PERCENTAGE = 5
 
 export function HomeCard({
   title,
@@ -22,6 +25,7 @@ export function HomeCard({
 }: Props): React.JSX.Element {
   const theme = useTheme()
   const { metricsResponse } = useDashboardContext()
+
   if (isLoading) {
     return (
       <Skeleton
@@ -50,10 +54,27 @@ export function HomeCard({
           <NumberFlow
             value={value ?? amount ?? 0}
             plugins={[continuous]}
-            style={theme.typography.h1}
+            style={{
+              ...theme.typography.h1,
+              ...(type === 'percentage' &&
+              (value ?? 0) > MAX_CRITICAL_PERCENTAGE
+                ? { color: colors.errorMain }
+                : {}),
+            }}
           />
         )}
-        {type === 'percentage' && <Typography variant="h1">%</Typography>}
+        {type === 'percentage' && (
+          <Typography
+            variant="h1"
+            color={
+              (value ?? 0) > MAX_CRITICAL_PERCENTAGE
+                ? colors.errorMain
+                : 'inherit'
+            }
+          >
+            %
+          </Typography>
+        )}
       </div>
     </Card>
   )

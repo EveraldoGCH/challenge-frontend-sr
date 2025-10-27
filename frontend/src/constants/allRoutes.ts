@@ -1,7 +1,7 @@
 const ROUTES = {
   MAIN_ROUTE: '/',
   DASHBOARD: '/dashboard',
-  ABOUT: '/about',
+  SETTINGS: '/settings',
 }
 
 export default ROUTES
