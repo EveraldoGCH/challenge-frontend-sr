@@ -1,11 +1,10 @@
 import ROUTES from '@/constants/allRoutes'
-import { Box, Tab, Tabs, styled } from '@mui/material'
-import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
-import { HomeCard } from './_components/HomeCard'
-import { useDashboardContext } from './_context/useDashboardContext'
-import { colors } from '@/constants/colors'
-import { useState } from 'react'
 import { MetricsRegions } from '@/services/metrics/getMetricsService'
+import { sReturn } from '@/utils/text'
+import { Box, Tab, Tabs } from '@mui/material'
+import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
+import { HomeCard } from './-components/HomeCard'
+import { useDashboardContext } from './-context/useDashboardContext'
 
 export const Route = createFileRoute(
   (ROUTES.DASHBOARD + '/') as keyof FileRoutesByPath
@@ -28,65 +27,48 @@ const tabStatusMap: Record<MetricsRegions, string> = {
 }
 
 function Dashboard() {
-  const [tab, setTab] = useState<number>(0)
-  const { metrics, isLoadingMetrics } = useDashboardContext()
-
-  const handleChangeTab = (_: React.SyntheticEvent, newTab: number) => {
-    setTab(newTab)
-  }
+  const {
+    isLoadingMetrics,
+    tab,
+    totalNewUsers,
+    totalRevenue,
+    totalChurnRate,
+    handleChangeTab,
+  } = useDashboardContext()
 
   if (isLoadingMetrics) return <div className="p-4">Cargando métricas...</div>
+  //TODO: Add loading state
 
   return (
     <>
-      <CustomTabs
-        value={tab}
-        onChange={handleChangeTab}
-        style={{ fontVariant: 'h1' }}
-      >
+      <Tabs value={tab} onChange={handleChangeTab}>
         {Object.values(MetricsRegions).map((region, index) => (
-          <CustomTab
+          <Tab
             key={region + 'tab'}
             label={tabStatusMap[region]}
+            value={region}
             {...tabProps(index)}
           />
         ))}
-      </CustomTabs>
+      </Tabs>
       <Box className="flex w-full justify-between">
         <HomeCard
-          title="Total de cobros"
-          amount={metrics?.length}
-          summedAmount={1000}
+          title={`Nuevo${sReturn(totalNewUsers ?? 0)} usuario${sReturn(totalNewUsers ?? 0)}`}
+          value={totalNewUsers}
           isLoading={false}
         />
         <HomeCard
-          title="Total de cobros"
-          amount={metrics?.length}
-          summedAmount={1000}
+          title={`Ingresos totales`}
+          amount={totalRevenue}
           isLoading={false}
         />
         <HomeCard
-          title="Total de cobros"
-          amount={metrics?.length}
-          summedAmount={1000}
+          title="Tasa de abandono"
+          value={totalChurnRate}
           isLoading={false}
+          type="percentage"
         />
       </Box>
     </>
   )
 }
-
-const CustomTabs = styled(Tabs)`
-  & .MuiTabs-scroller {
-    & .MuiTabs-flexContainer {
-    }
-  }
-  & .MuiTabs-indicator {
-  }
-`
-
-const CustomTab = styled(Tab)`
-  &.Mui-selected {
-    color: ${colors.textPrimary};
-  }
-`

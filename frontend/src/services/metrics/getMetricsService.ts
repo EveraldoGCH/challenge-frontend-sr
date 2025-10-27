@@ -7,35 +7,20 @@ export enum MetricsRegions {
   APAC = 'APAC',
 }
 
+export interface MetricsData {
+  timestamp: string
+  activeUsers: number
+  newUsers: number
+  revenue: number
+  churnRate: number
+}
+
 export interface MetricsResponse {
-  [MetricsRegions.US]: {
-    timestamp: string
-    activeUsers: number
-    newUsers: number
-    revenue: number
-    churnRate: number
-  }
-  [MetricsRegions.EU]: {
-    timestamp: string
-    activeUsers: number
-    newUsers: number
-    revenue: number
-    churnRate: number
-  }
-  [MetricsRegions.LATAM]: {
-    timestamp: string
-    activeUsers: number
-    newUsers: number
-    revenue: number
-    churnRate: number
-  }
-  [MetricsRegions.APAC]: {
-    timestamp: string
-    activeUsers: number
-    newUsers: number
-    revenue: number
-    churnRate: number
-  }
+  [MetricsRegions.US]: MetricsData
+  [MetricsRegions.EU]: MetricsData
+  [MetricsRegions.LATAM]: MetricsData
+  [MetricsRegions.APAC]: MetricsData
+  updatedAt?: string
 }
 
 export const getMetricsService = async (): Promise<MetricsResponse[]> => {

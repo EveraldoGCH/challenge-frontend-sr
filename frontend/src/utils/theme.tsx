@@ -342,9 +342,6 @@ const customThemeOptions: ThemeOptions = createTheme({
         },
       },
     },
-    MuiTypography: {
-      defaultProps: { color: colors.textPrimary },
-    },
     MuiTooltip: {
       styleOverrides: {
         tooltipArrow: {
@@ -365,6 +362,25 @@ const customThemeOptions: ThemeOptions = createTheme({
       styleOverrides: {
         root: {
           color: 'inherit',
+        },
+      },
+    },
+    MuiTabs: {
+      styleOverrides: {
+        root: {
+          '& .MuiTabs-indicator': {
+            backgroundColor: colors.primaryLight,
+          },
+        },
+      },
+    },
+    MuiTab: {
+      styleOverrides: {
+        root: {
+          textTransform: 'none',
+          '&.Mui-selected': {
+            color: colors.textPrimary,
+          },
         },
       },
     },
@@ -429,6 +445,19 @@ const customThemeOptions: ThemeOptions = createTheme({
       fontWeight: 500,
       lineHeight: '16px',
       color: colors.textPrimary,
+    },
+  },
+  palette: {
+    text: {
+      primary: colors.textPrimary,
+      secondary: colors.textSecondary,
+      disabled: colors.textDisabled,
+    },
+    secondary: {
+      main: colors.textSecondary,
+    },
+    disabled: {
+      main: colors.textDisabled,
     },
   },
 })
