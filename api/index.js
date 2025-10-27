@@ -1,6 +1,8 @@
 import express from "express";
 import cors from "cors";
 
+const awaitTime = (ms) => new Promise(resolve => setTimeout(resolve, ms));
+
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -23,7 +25,8 @@ function generateMetrics() {
 }
 
 // Endpoint de métricas simuladas con volumen
-app.get("/metrics", (req, res) => {
+app.get("/metrics", async (req, res) => {
+  await awaitTime(1000);
   const { count = 20 } = req.query; // opcional: pasar ?count=50
   const metricsArray = Array.from({ length: Number(count) }, () => generateMetrics());
   res.json(metricsArray);
