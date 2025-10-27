@@ -51,10 +51,6 @@ function Dashboard() {
             {...tabProps(index)}
           />
         ))}
-        {/* <CustomTab label="Pendientes" {...tabProps(0)} />
-        <CustomTab label="Completados" {...tabProps(1)} />
-        <CustomTab label="Rechazados" {...tabProps(2)} />
-        <CustomTab label="Rechazados" {...tabProps(3)} /> */}
       </CustomTabs>
       <Box className="flex w-full justify-between">
         <HomeCard

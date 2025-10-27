@@ -21,7 +21,8 @@
     "axios": "^1.12.2",
     "currency.js": "^2.0.4",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "recharts": "^3.3.0"
   },
   "devDependencies": {
     "@tanstack/router-plugin": "^1.133.27",
