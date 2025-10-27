@@ -1,11 +1,11 @@
+import { ModalBase } from '@/components/core/Modal/ModalBase/ModalBase'
 import { colors } from '@/constants/colors'
+import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
+import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
+import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined'
 import { Box, Button, Stack, styled, Typography } from '@mui/material'
 import { ReactNode } from 'react'
-import CheckOutlinedIcon from '@mui/icons-material/CheckOutlined'
-import QueryBuilderOutlinedIcon from '@mui/icons-material/QueryBuilderOutlined'
-import DeleteOutlineOutlinedIcon from '@mui/icons-material/DeleteOutlineOutlined'
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined'
-import { ModalBase } from '@/components/core/Modal/ModalBase/ModalBase'
 
 type VariantColors = 'success' | 'warning' | 'error' | 'delete'
 
@@ -71,7 +71,6 @@ export interface ModalNotificationProps {
     title?: string
     message?: string
     variant: VariantColors
-    link?: { linkText: string; url: string }
     button1?: {
       text: string
       onClick: () => void
@@ -88,9 +87,6 @@ export interface ModalNotificationProps {
       endIcon?: ReactNode
       startIcon?: ReactNode
     }
-    closeBtn?: boolean
-    children?: ReactNode
-    icon?: ReactNode
   }
   open: boolean
   onClose: () => void
@@ -98,21 +94,10 @@ export interface ModalNotificationProps {
 
 const Notification = (props: ModalNotificationProps) => {
   const {
-    content: {
-      title,
-      message,
-      closeBtn,
-      variant,
-      button1,
-      button2,
-      children,
-      icon,
-    },
+    content: { title, message, variant, button1, button2 },
     open,
     onClose,
   } = props
-
-  const Icon = icon ? icon : icons[variant]
 
   return (
     <ModalBase
@@ -128,7 +113,7 @@ const Notification = (props: ModalNotificationProps) => {
           secondColor={variantColorsSecondColor[variant]}
           size="extra-large"
         >
-          {Icon}
+          {icons[variant]}
         </IconContainer>
 
         <Box
@@ -149,7 +134,6 @@ const Notification = (props: ModalNotificationProps) => {
           >
             {message}
           </Typography>
-          {children}
         </Box>
         <Box
           display={'flex'}
@@ -187,17 +171,6 @@ const Notification = (props: ModalNotificationProps) => {
               startIcon={button1.startIcon}
             >
               {button1.text}
-            </Button>
-          )}
-
-          {closeBtn && (
-            <Button
-              variant="contained"
-              onClick={onClose}
-              fullWidth
-              size="large"
-            >
-              Cerrar
             </Button>
           )}
         </Box>
