@@ -37,7 +37,7 @@ export function HomeCard({
     return (
       <Skeleton
         variant="rounded"
-        width={'33%'}
+        width={isSmallScreen ? '100%' : 'calc(33% - 16px)'}
         height={'150px'}
         sx={{ borderRadius: '16px' }}
       />

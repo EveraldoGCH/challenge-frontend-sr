@@ -3,6 +3,7 @@ import {
   SIDE_BAR_WIDTH_XL,
   SIDE_BAR_WIDTH_LG,
   SIDE_BAR_WIDTH_MD,
+  SIDE_BAR_WIDTH_SM,
 } from '@/constants/constants'
 import { Box, Paper } from '@mui/material'
 import { styled } from '@mui/material/styles'
@@ -29,6 +30,11 @@ export const SideNavCont = styled(Paper)(({ theme }) => ({
   },
   [theme.breakpoints.down('md')]: {
     maxWidth: SIDE_BAR_WIDTH_MD,
+  },
+  [theme.breakpoints.down('sm')]: {
+    maxWidth: SIDE_BAR_WIDTH_SM,
+    padding: '6px',
+    margin: '8px 0px 8px 4px',
   },
 }))
 
@@ -76,6 +82,9 @@ export const ListItemSideBar = styled(Box)<{
     transition: '0.2s ease',
     color: logoutItem ? colors.errorMain : 'inherit',
   },
+  [theme.breakpoints.down('sm')]: {
+    padding: '4px',
+  },
 }))
 
 export const ChildrenContainer = styled(Box)(({ theme }) => ({
@@ -94,5 +103,10 @@ export const ChildrenContainer = styled(Box)(({ theme }) => ({
     padding: '12px 24px 24px 24px',
     marginLeft: `calc(${SIDE_BAR_WIDTH_MD} + 8px)`,
     width: `calc(100% - ${SIDE_BAR_WIDTH_MD} - 24px)`,
+  },
+  [theme.breakpoints.down('sm')]: {
+    padding: '12px 12px 12px 12px',
+    marginLeft: `calc(${SIDE_BAR_WIDTH_SM} + 4px)`,
+    width: `calc(100% - ${SIDE_BAR_WIDTH_SM} - 4px)`,
   },
 }))

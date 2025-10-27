@@ -3,7 +3,7 @@ import { colors } from '@/constants/colors'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
 import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import SettingsIcon from '@mui/icons-material/Settings'
-import { Box, Stack } from '@mui/material'
+import { Box, Stack, useMediaQuery, useTheme } from '@mui/material'
 import { useMemo } from 'react'
 import { ItemSideBar } from './components/ItemSideBar'
 import { ChildrenContainer, SideNavCont } from './SideBarStyles'
@@ -25,6 +25,8 @@ const SideBar = ({
 }: {
   children?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) => {
+  const theme = useTheme()
+  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const { modalNotify } = useNotificationsContext()
   const sideBarItemsBlock2: SideBarItem[] = useMemo(
     () => [
@@ -62,11 +64,19 @@ const SideBar = ({
       <SideNavCont {...props}>
         <Stack gap={'24px'}>
           <div className="flex items-center w-full">
-            <img
-              src={'./src/assets/colppyLogo.svg'}
-              alt="Logo"
-              style={{ width: '128px', color: colors.primaryMain }}
-            />
+            {isSmallScreen ? (
+              <img
+                src={'./src/assets/colppySmall.jpg'}
+                alt="Logo"
+                style={{ width: '48px', color: colors.primaryMain }}
+              />
+            ) : (
+              <img
+                src={'./src/assets/colppyLogo.svg'}
+                alt="Logo"
+                style={{ width: '128px', color: colors.primaryMain }}
+              />
+            )}
           </div>
           {sideBarItemsBlock1.map(item => (
             <ItemSideBar key={item.name + 'item sidebar'} item={item} />

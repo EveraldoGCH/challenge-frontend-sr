@@ -26,7 +26,7 @@ const PageLayout = ({
 }: PageLayoutProps) => {
   return (
     <Stack
-      spacing={'32px'}
+      spacing={'24px'}
       sx={{ width: '100%' }}
       alignItems={'center'}
       minWidth={{ xl: MIN_WIDTH_FOR_DESKTOP_XL }}

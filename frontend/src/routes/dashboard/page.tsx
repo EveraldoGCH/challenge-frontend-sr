@@ -1,11 +1,11 @@
 import ROUTES from '@/constants/allRoutes'
 import { MetricsRegions } from '@/services/metrics/getMetricsService'
 import { sReturn } from '@/utils/text'
-import { Box, Tab, Tabs } from '@mui/material'
+import { Tab, Tabs } from '@mui/material'
 import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
+import { ChartContainerDashboard } from './-components/ChartContainerDashboard'
 import { HomeCard } from './-components/HomeCard'
 import { useDashboardContext } from './-context/useDashboardContext'
-import { ChartContainerDashboard } from './-components/ChartContainerDashboard'
 
 export const Route = createFileRoute(
   (ROUTES.DASHBOARD + '/') as keyof FileRoutesByPath
@@ -51,7 +51,7 @@ function Dashboard() {
         ))}
       </Tabs>
       <ChartContainerDashboard />
-      <Box className="flex w-full lg:justify-between md:gap-[24px] sm:gap-[24px] flex-wrap">
+      <div className="flex w-full flex-wrap gap-6 lg:gap-4 lg:flex-row flex-col lg:justify-between">
         <HomeCard
           title={`Nuevo${sReturn(totalNewUsers ?? 0)} usuario${sReturn(totalNewUsers ?? 0)}`}
           value={totalNewUsers}
@@ -68,7 +68,7 @@ function Dashboard() {
           isLoading={isLoadingMetrics}
           type="percentage"
         />
-      </Box>
+      </div>
     </>
   )
 }

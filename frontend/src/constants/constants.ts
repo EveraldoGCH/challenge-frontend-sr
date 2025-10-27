@@ -2,6 +2,7 @@
 export const SIDE_BAR_WIDTH_XL = '230px'
 export const SIDE_BAR_WIDTH_LG = '180px'
 export const SIDE_BAR_WIDTH_MD = '160px'
+export const SIDE_BAR_WIDTH_SM = '48px'
 
 export const MIN_WIDTH_FOR_DESKTOP_XL = '824px'
 export const MAX_WIDTH_FOR_DESKTOP_XL = '1116px'
