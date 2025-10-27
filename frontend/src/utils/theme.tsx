@@ -157,11 +157,6 @@ const customThemeOptions: ThemeOptions = createTheme({
               height: 16,
             },
           },
-          //Esto es para que si el boton esta loading el spinner se vea bien
-          '& .MuiCircularProgress-root': {
-            width: '16px !important',
-            height: '16px !important',
-          },
         },
         sizeMedium: {
           fontSize: defaultTheme.typography.pxToRem(12),

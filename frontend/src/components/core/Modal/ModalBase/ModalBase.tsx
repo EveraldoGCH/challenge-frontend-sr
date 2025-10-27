@@ -18,7 +18,6 @@ export const ModalBase = ({
   wrapperStyles,
   ...props
 }: ModalProps) => {
-  //BREAKPOINTS for maxWidth: xs=0px, sm=600px, md=985px, lg=1200px, xl=1536px
   const handleClose: DialogProps['onClose'] = (_, reason) => {
     if (reason && reason === 'backdropClick') onClose()
   }

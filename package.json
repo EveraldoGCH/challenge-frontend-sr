@@ -11,8 +11,7 @@
     "build": "concurrently \"cd frontend && npm run build\" \"cd api && npm run build\"",
     "lint": "concurrently \"cd frontend && npm run lint\" \"cd api && npm run lint\"",
     "format": "concurrently \"cd frontend && npm run format\" \"cd api && npm run format\"",
-    "prepare": "husky",
-    "postinstall": "concurrently \"cd api && npm install\" \"cd frontend && npm install\""
+    "prepare": "husky"
   },
   "devDependencies": {
     "@eslint/js": "^9.38.0",

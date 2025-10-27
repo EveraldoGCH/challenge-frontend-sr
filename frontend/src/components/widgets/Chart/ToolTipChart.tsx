@@ -86,24 +86,9 @@ export function TooltipChart({
               text="Usuarios activos"
               text2={`${formatCurrency(payload[0].value, { precision: 0, symbol: '' })}`}
             />
-            {/* <ToolTipItem
-              icon={
-                <CoinsStacked03
-                  color={colors.greyCool300}
-                  width="14px"
-                  height="14px"
-                />
-              }
-              text="Rendimiento mensual"
-              text2="$2.324K"
-            /> */}
           </Stack>
         </Stack>
       </Card>
-      // <div className="custom-tooltip"> asi se tienen los datos en el tooltip
-      //   {/* <p className="label">{`Date: ${payload[0].payload?.name}`}</p> */}
-      //   <p className="intro">{`Value: ${payload[0].value}`}</p>
-      // </div>
     )
   }
 
