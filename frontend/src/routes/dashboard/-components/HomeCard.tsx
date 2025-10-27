@@ -27,7 +27,7 @@ export function HomeCard({
       <Skeleton
         variant="rounded"
         width={'33%'}
-        height={'146px'}
+        height={'150px'}
         sx={{ borderRadius: '16px' }}
       />
     )

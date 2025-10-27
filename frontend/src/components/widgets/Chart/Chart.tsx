@@ -13,6 +13,37 @@ import {
 } from 'recharts'
 import { TooltipChart } from './ToolTipChart'
 
+let dataForLoading = [
+  {
+    name: '',
+    value: Math.random(),
+  },
+  {
+    name: '',
+    value: Math.random(),
+  },
+  {
+    name: '',
+    value: Math.random(),
+  },
+  {
+    name: '',
+    value: Math.random(),
+  },
+  {
+    name: '',
+    value: Math.random(),
+  },
+  {
+    name: '',
+    value: Math.random(),
+  },
+  {
+    name: '',
+    value: Math.random(),
+  },
+]
+
 interface DotProps {
   hover?: boolean
   active?: string
@@ -53,44 +84,6 @@ export const Chart = memo(
     data: { name: string; value: number }[]
     loadingData?: boolean
   }): React.JSX.Element => {
-    let dataForLoading = [
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-      {
-        name: '',
-        value: () => Math.random(),
-        shortedValue: () => Math.random(),
-      },
-    ]
-
     return (
       <ResponsiveContainer height={'100%'} width="100%">
         <AreaChart

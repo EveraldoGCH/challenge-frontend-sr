@@ -37,9 +37,6 @@ function Dashboard() {
     handleChangeTab,
   } = useDashboardContext()
 
-  if (isLoadingMetrics) return <div className="p-4">Cargando métricas...</div>
-  //TODO: Add loading state
-
   return (
     <>
       <Tabs value={tab} onChange={handleChangeTab}>
@@ -49,6 +46,7 @@ function Dashboard() {
             label={tabStatusMap[region]}
             value={region}
             {...tabProps(index)}
+            disabled={isLoadingMetrics}
           />
         ))}
       </Tabs>
@@ -56,17 +54,17 @@ function Dashboard() {
         <HomeCard
           title={`Nuevo${sReturn(totalNewUsers ?? 0)} usuario${sReturn(totalNewUsers ?? 0)}`}
           value={totalNewUsers}
-          isLoading={false}
+          isLoading={isLoadingMetrics}
         />
         <HomeCard
           title={`Ingresos totales`}
           amount={totalRevenue}
-          isLoading={false}
+          isLoading={isLoadingMetrics}
         />
         <HomeCard
           title="Tasa de abandono"
           value={totalChurnRate}
-          isLoading={false}
+          isLoading={isLoadingMetrics}
           type="percentage"
         />
       </Box>
