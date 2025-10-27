@@ -17,6 +17,8 @@ function tabProps(index: number) {
   }
 }
 
+console.log('tabProps', tabProps(1))
+
 function Dashboard() {
   const { metrics, isLoadingMetrics } = useDashboardContext()
 
