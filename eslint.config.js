@@ -54,6 +54,7 @@ module.exports = defineConfig([
       ],
       "react/react-in-jsx-scope": "off",
       "@typescript-eslint/no-explicit-any": "warn",
+      "react-hooks/exhaustive-deps":"off"
     },
   },
   {

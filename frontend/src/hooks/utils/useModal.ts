@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react'
 
-export const useModal = () => {
-  const [open, setOpen] = useState(false)
+export const useModal = (openInitial: boolean = false) => {
+  const [open, setOpen] = useState(openInitial)
 
   const onOpen = useCallback(() => {
     setOpen(true)

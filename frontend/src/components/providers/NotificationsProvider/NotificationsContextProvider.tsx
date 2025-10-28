@@ -1,9 +1,10 @@
-import { ReactNode, useState } from 'react'
+import { ReactNode, useEffect, useState } from 'react'
 import { NotificationsContext } from './useNotificationsContext'
 import { useModal } from '@/hooks/utils/useModal'
 import ModalNotification, {
   ModalNotificationProps,
-} from '@/components/widgets/ModalNotification/ModalNotification'
+} from '@/components/widgets/Modals/ModalNotification/ModalNotification'
+import ModalFullScreenLoading from '@/components/widgets/Modals/ModalFullScreenLoading/ModalFullScreenLoading'
 
 export interface NotificationsContextType {
   modalNotify: (props: ModalNotificationProps['content']) => void
@@ -28,10 +29,21 @@ export const NotificationsContextProvider = ({
     onClose: onCloseModalNotify,
   } = useModal()
 
+  const {
+    open: openModalFullScreenLoading,
+    onClose: onCloseModalFullScreenLoading,
+  } = useModal(true)
+
   const modalNotify = (props: ModalNotificationProps['content']) => {
     onOpenModalNotify()
     setModalNotifyContent(props)
   }
+
+  useEffect(() => {
+    setTimeout(() => {
+      onCloseModalFullScreenLoading()
+    }, 700)
+  }, [])
 
   return (
     <NotificationsContext.Provider
@@ -44,6 +56,7 @@ export const NotificationsContextProvider = ({
         onClose={onCloseModalNotify}
         content={modalNotifyContent}
       />
+      <ModalFullScreenLoading open={openModalFullScreenLoading} />
       {children}
     </NotificationsContext.Provider>
   )

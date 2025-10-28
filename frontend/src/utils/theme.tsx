@@ -339,6 +339,11 @@ const customThemeOptions: ThemeOptions = createTheme({
           '&.Mui-selected': {
             color: colors.textPrimary,
           },
+          [defaultTheme.breakpoints.down('sm')]: {
+            fontSize: '14px',
+            padding: '6px 6px',
+            minWidth: 'auto',
+          },
         },
       },
     },
