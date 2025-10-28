@@ -8,5 +8,5 @@ import ROUTES from '../constants/allRoutes'
 export const Route = createFileRoute(
   ROUTES.MAIN_ROUTE as keyof FileRoutesByPath
 )({
-  component: () => <Navigate to={ROUTES.DASHBOARD} />,
+  component: () => <Navigate to={ROUTES.LOGIN} />,
 })
