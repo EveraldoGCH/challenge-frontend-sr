@@ -8,6 +8,7 @@ import ModalFullScreenLoading from '@/components/widgets/Modals/ModalFullScreenL
 
 export interface NotificationsContextType {
   modalNotify: (props: ModalNotificationProps['content']) => void
+  onOpenModalFullScreenLoading: () => void
 }
 
 export const NotificationsContextProvider = ({
@@ -31,6 +32,7 @@ export const NotificationsContextProvider = ({
 
   const {
     open: openModalFullScreenLoading,
+    onOpen: onOpenModalFullScreenLoading,
     onClose: onCloseModalFullScreenLoading,
   } = useModal(true)
 
@@ -43,12 +45,13 @@ export const NotificationsContextProvider = ({
     setTimeout(() => {
       onCloseModalFullScreenLoading()
     }, 700)
-  }, [])
+  }, [openModalFullScreenLoading])
 
   return (
     <NotificationsContext.Provider
       value={{
         modalNotify,
+        onOpenModalFullScreenLoading,
       }}
     >
       <ModalNotification

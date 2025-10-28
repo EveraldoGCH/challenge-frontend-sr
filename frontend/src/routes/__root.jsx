@@ -1,14 +1,31 @@
 import SideBar from '@/components/layout/SideBar/SideBar.tsx'
 import AllProviders from '@/components/providers/AllProviders'
-import { createRootRoute, Outlet } from '@tanstack/react-router'
+import { createRootRoute, Outlet, useLocation } from '@tanstack/react-router'
+import ROUTES from '@/constants/allRoutes'
 
-export const Route = createRootRoute({
-  component: () => (
+const routesWithoutSideBar = [ROUTES.LOGIN]
+
+const isRouteWithoutSideBar = pathname => {
+  return routesWithoutSideBar.includes(pathname)
+}
+
+const RootComponent = () => {
+  const { pathname } = useLocation()
+
+  return (
     <AllProviders>
-      <SideBar>
+      {isRouteWithoutSideBar(pathname) ? (
         <Outlet />
-      </SideBar>
+      ) : (
+        <SideBar>
+          <Outlet />
+        </SideBar>
+      )}
       {/* <TanStackRouterDevtools /> */}
     </AllProviders>
-  ),
+  )
+}
+
+export const Route = createRootRoute({
+  component: RootComponent,
 })

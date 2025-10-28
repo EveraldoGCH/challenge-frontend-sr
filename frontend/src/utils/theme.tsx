@@ -40,19 +40,6 @@ const customThemeOptions: ThemeOptions = createTheme({
         outlined: {
           border: `1px solid ${colors.textPrimary}`,
           color: '#D42D35',
-          '& .MuiCircularProgress-root': {
-            color: colors.textPrimary,
-          },
-          '&:hover': {
-            border: `1px solid ${colors.greyDark}`,
-            backgroundColor: 'rgba(27, 27, 27, 0.10)',
-            transition: 'background-color 0.3s ease',
-          },
-          '&.Mui-disabled': {
-            color: colors.textDisabled,
-            border: `1px solid #BEBEBE`,
-          },
-
           '&.MuiButton-colorPrimary': {
             background: 'transparent',
             border: `1px solid ${colors.textPrimary}`,
@@ -62,7 +49,7 @@ const customThemeOptions: ThemeOptions = createTheme({
               color: colors.textPrimary,
             },
             '&:hover': {
-              backgroundColor: 'rgba(27, 27, 27, 0.10)',
+              backgroundColor: colors.greyLight,
               transition: 'background-color 0.3s ease',
             },
             '&.Mui-disabled': {
@@ -118,7 +105,7 @@ const customThemeOptions: ThemeOptions = createTheme({
         },
         contained: ({ theme }) => ({
           fill: theme.palette.primary.contrastText,
-          backgroundColor: '#444CE7',
+          backgroundColor: colors.primaryMain,
 
           borderRadius: '6px',
           '& .MuiCircularProgress-root': {
@@ -229,6 +216,22 @@ const customThemeOptions: ThemeOptions = createTheme({
             {
               opacity: 0, // Esconde placeholder si hay label y no está enfocado
             },
+          // Estilos para cuando el TextField está en focus
+          '& .MuiOutlinedInput-root': {
+            '&.Mui-focused .MuiOutlinedInput-notchedOutline': {
+              borderColor: colors.primaryMain,
+              borderWidth: '2px',
+            },
+            '&:hover .MuiOutlinedInput-notchedOutline': {
+              borderColor: colors.primaryMain,
+            },
+          },
+          // Color del label cuando está en focus
+          '& .MuiInputLabel-root': {
+            '&.Mui-focused': {
+              color: colors.primaryMain,
+            },
+          },
         },
       },
     },

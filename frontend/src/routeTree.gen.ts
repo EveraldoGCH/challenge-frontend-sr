@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as DashboardLayoutRouteImport } from './routes/dashboard/layout'
 import { Route as PageRouteImport } from './routes/page'
+import { Route as LoginPageRouteImport } from './routes/login/page'
 import { Route as DashboardPageRouteImport } from './routes/dashboard/page'
 
 const DashboardLayoutRoute = DashboardLayoutRouteImport.update({
@@ -23,6 +24,11 @@ const PageRoute = PageRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LoginPageRoute = LoginPageRouteImport.update({
+  id: '/login/',
+  path: '/login/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DashboardPageRoute = DashboardPageRouteImport.update({
   id: '/',
   path: '/',
@@ -33,28 +39,32 @@ export interface FileRoutesByFullPath {
   '/': typeof PageRoute
   '/dashboard': typeof DashboardLayoutRouteWithChildren
   '/dashboard/': typeof DashboardPageRoute
+  '/login': typeof LoginPageRoute
 }
 export interface FileRoutesByTo {
   '/': typeof PageRoute
   '/dashboard': typeof DashboardPageRoute
+  '/login': typeof LoginPageRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof PageRoute
   '/dashboard': typeof DashboardLayoutRouteWithChildren
   '/dashboard/': typeof DashboardPageRoute
+  '/login/': typeof LoginPageRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/dashboard' | '/dashboard/'
+  fullPaths: '/' | '/dashboard' | '/dashboard/' | '/login'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/dashboard'
-  id: '__root__' | '/' | '/dashboard' | '/dashboard/'
+  to: '/' | '/dashboard' | '/login'
+  id: '__root__' | '/' | '/dashboard' | '/dashboard/' | '/login/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   PageRoute: typeof PageRoute
   DashboardLayoutRoute: typeof DashboardLayoutRouteWithChildren
+  LoginPageRoute: typeof LoginPageRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -71,6 +81,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof PageRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/login/': {
+      id: '/login/'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginPageRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/dashboard/': {
@@ -98,6 +115,7 @@ const DashboardLayoutRouteWithChildren = DashboardLayoutRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   PageRoute: PageRoute,
   DashboardLayoutRoute: DashboardLayoutRouteWithChildren,
+  LoginPageRoute: LoginPageRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

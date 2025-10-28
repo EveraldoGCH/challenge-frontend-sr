@@ -11,6 +11,7 @@ import logoSmall from '@/public/images/colppySmall.jpg'
 import logo from '@/public/images/colppyLogo.svg'
 import { useNotificationsContext } from '@/components/providers/NotificationsProvider/useNotificationsContext'
 import { sideBarItemsBlock1 } from './constants/SideBarRoutes'
+import { useNavigate } from '@tanstack/react-router'
 
 const SideBar = ({
   children,
@@ -19,6 +20,7 @@ const SideBar = ({
   children?: React.ReactNode
 } & React.HTMLAttributes<HTMLDivElement>) => {
   const theme = useTheme()
+  const navigate = useNavigate()
   const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'))
   const { modalNotify } = useNotificationsContext()
   const sideBarItemsBlock2: SideBarItem[] = useMemo(
@@ -40,7 +42,9 @@ const SideBar = ({
             variant: 'error',
             button1: {
               text: 'Salir',
-              onClick: () => {},
+              onClick: () => {
+                navigate({ to: ROUTES.LOGIN })
+              },
             },
             button2: {
               text: 'Cancelar',
@@ -50,7 +54,7 @@ const SideBar = ({
         path: '',
       },
     ],
-    [modalNotify]
+    [modalNotify, navigate]
   )
 
   return (
