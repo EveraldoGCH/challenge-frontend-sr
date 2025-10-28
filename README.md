@@ -33,8 +33,8 @@ Recharts - Biblioteca de gráficos para React
 ESLint - Linter de TypeScript
 Husky - capturar hooks de pre-commit de git y asi mantener calidad y orden del código
 
-Utilidades
-Axios - Cliente HTTP
+## Cliente HTTP
+Axios
 
 ## ✅Que evalúa
 
