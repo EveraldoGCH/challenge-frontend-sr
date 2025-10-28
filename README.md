@@ -12,24 +12,24 @@ Ir a https://challenge-frontend-sr-frontend.vercel.app
 
 ## Stack utilizado
 
-Framework Principal
+## Framework Principal
 React 18
 TypeScript
 
-Routing
+## Routing
 TanStack Router
 
-UI Framework
+## UI Framework
 Material-UI (MUI) v6 - Biblioteca de componentes UI
 Tailwind CSS - Framework de CSS utilitario
 
-Formularios
+## Formularios
 React Hook Form - Manejo de formularios
 
-Gráficos/Charts
+## Gráficos/Charts
 Recharts - Biblioteca de gráficos para React
 
-Linting & Formatting
+## Linting & Formatting
 ESLint - Linter de TypeScript
 Husky - capturar hooks de pre-commit de git y asi mantener calidad y orden del código
 
