@@ -64,8 +64,8 @@ export const Block = styled(Box)<{ focused: boolean; gap?: string }>(
 
 export const ListItemSideBar = styled(Box)<{
   expandableItem?: boolean
-  logoutItem?: boolean
-}>(({ theme, logoutItem }) => ({
+  disabled?: boolean
+}>(({ theme, disabled }) => ({
   gap: theme.spacing(1),
   display: 'flex',
   justifyContent: 'space-between',
@@ -76,11 +76,15 @@ export const ListItemSideBar = styled(Box)<{
   fontSize: '0.875rem',
   lineHeight: '28px',
   width: '100%',
+  color: disabled ? colors.textDisabled : 'inherit',
+  opacity: disabled ? 0.8 : 1,
+  '.MuiTypography-root': {
+    color: disabled ? colors.textDisabled : 'inherit',
+  },
   padding: theme.spacing(1),
   '&:hover': {
     backgroundColor: colors.greyLight,
     transition: '0.2s ease',
-    color: logoutItem ? colors.errorMain : 'inherit',
   },
   [theme.breakpoints.down('sm')]: {
     justifyContent: 'center',

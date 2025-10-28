@@ -1,7 +1,6 @@
 import ROUTES from '@/constants/allRoutes'
 import { colors } from '@/constants/colors'
 import ExitToAppIcon from '@mui/icons-material/ExitToApp'
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded'
 import SettingsIcon from '@mui/icons-material/Settings'
 import { Box, Stack, useMediaQuery, useTheme } from '@mui/material'
 import { useMemo } from 'react'
@@ -11,15 +10,7 @@ import { SideBarItem } from './type'
 import logoSmall from '@/public/images/colppySmall.jpg'
 import logo from '@/public/images/colppyLogo.svg'
 import { useNotificationsContext } from '@/components/providers/NotificationsProvider/useNotificationsContext'
-
-const sideBarItemsBlock1: SideBarItem[] = [
-  {
-    icon: <HomeRoundedIcon />,
-    name: 'Inicio',
-    onClick: () => {},
-    path: ROUTES.DASHBOARD,
-  },
-]
+import { sideBarItemsBlock1 } from './constants/SideBarRoutes'
 
 const SideBar = ({
   children,
@@ -37,6 +28,7 @@ const SideBar = ({
         name: 'Configuración',
         onClick: () => {},
         path: ROUTES.SETTINGS,
+        disabled: true,
       },
       {
         icon: <ExitToAppIcon color="error" />,
@@ -80,9 +72,11 @@ const SideBar = ({
               />
             )}
           </div>
-          {sideBarItemsBlock1.map(item => (
-            <ItemSideBar key={item.name + 'item sidebar'} item={item} />
-          ))}
+          <Stack gap={'8px'}>
+            {sideBarItemsBlock1.map(item => (
+              <ItemSideBar key={item.name + 'item sidebar'} item={item} />
+            ))}
+          </Stack>
         </Stack>
         <Box className="flex gap-2  w-full flex-col">
           {sideBarItemsBlock2.map(item => (

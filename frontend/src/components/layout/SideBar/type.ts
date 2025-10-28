@@ -3,4 +3,5 @@ export interface SideBarItem {
   name: string
   onClick: () => void
   path: string
+  disabled?: boolean
 }
