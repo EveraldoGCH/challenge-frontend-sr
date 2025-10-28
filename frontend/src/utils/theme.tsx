@@ -362,7 +362,7 @@ const customThemeOptions: ThemeOptions = createTheme({
     fontFamily: 'Nunito Sans, Gabarito, Roboto',
     h1: {
       fontSize: defaultTheme.typography.pxToRem(42),
-      fontWeight: 400,
+      fontWeight: 500,
       lineHeight: '64px',
       letterSpacing: '-1px',
       color: colors.textPrimary,
