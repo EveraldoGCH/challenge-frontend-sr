@@ -88,7 +88,7 @@ export const Chart = memo(
       <ResponsiveContainer height={'100%'} width="100%">
         <AreaChart
           data={loadingData ? dataForLoading : data}
-          margin={{ top: 0, right: 5, bottom: 1, left: -10 }}
+          margin={{ top: 0, right: 5, bottom: 1, left: -35 }}
         >
           <defs>
             <linearGradient id="area-performance" x1="0" x2="0" y1="0" y2="1">
@@ -111,7 +111,7 @@ export const Chart = memo(
             tickLine={loadingData}
             type="category"
             interval={Math.floor(data.length / 7) - 1}
-            padding={{ left: 12, right: 0 }}
+            padding={{ left: 4, right: 0 }}
             fontSize={'14px'}
           />
           <YAxis
