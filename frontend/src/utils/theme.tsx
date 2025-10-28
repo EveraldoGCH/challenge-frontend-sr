@@ -338,6 +338,7 @@ const customThemeOptions: ThemeOptions = createTheme({
           textTransform: 'none',
           '&.Mui-selected': {
             color: colors.textPrimary,
+            fontWeight: 600,
           },
           [defaultTheme.breakpoints.down('sm')]: {
             fontSize: '14px',
@@ -358,8 +359,7 @@ const customThemeOptions: ThemeOptions = createTheme({
     },
   },
   typography: {
-    fontFamily:
-      "Roboto, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif",
+    fontFamily: 'Nunito Sans, Gabarito, Roboto',
     h1: {
       fontSize: defaultTheme.typography.pxToRem(42),
       fontWeight: 400,
