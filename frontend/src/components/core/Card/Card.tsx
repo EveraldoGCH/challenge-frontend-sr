@@ -58,6 +58,7 @@ export function Card({
     border: border ? border : '1px solid #e5e7eb',
     minHeight: '25px',
     overflow: 'hidden',
+    boxShadow: ' 0px 0px 1px 0px rgba(0,0,0,0.50)',
   }
 
   if (

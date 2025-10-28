@@ -54,7 +54,7 @@ function generateMetrics(day) {
 
 // Endpoint de métricas simuladas con volumen
 app.get("/metrics", async (req, res) => {
-  await awaitTime(1000)
+  await awaitTime(1500)
   const { count = 30 } = req.query // opcional: pasar ?count=50
   const metricsArray = Array.from({ length: Number(count) }, (_, index) =>
     generateMetrics(index + 1)

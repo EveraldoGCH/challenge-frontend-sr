@@ -1,0 +1,16 @@
+@keyframes appearAnimation {
+  0% {
+    transform: translateX(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.appear-animation {
+  animation: appearAnimation 0.3s ease-out forwards;
+  opacity: 0;
+}

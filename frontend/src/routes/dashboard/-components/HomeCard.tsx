@@ -54,6 +54,7 @@ export function HomeCard({
           {`${dayjs(metricsResponse?.[0]?.updatedAt).format('DD/MM')} - ${dayjs().format('DD/MM')}`}
         </Typography>
       }
+      className="appear-animation"
     >
       <div className="flex items-center gap-1 ">
         {amount && (
