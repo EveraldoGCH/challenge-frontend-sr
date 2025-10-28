@@ -1,12 +1,20 @@
 import ROUTES from '@/constants/allRoutes'
 import { colors } from '@/constants/colors'
-import useDebounce from '@/hooks/utils/useDebounce'
 import loginImage from '@/public/images/loginSide.svg'
-import { Box, Button, Grid, Stack, TextField, Typography } from '@mui/material'
-import { useMemo, useState } from 'react'
-import { createFileRoute, FileRoutesByPath } from '@tanstack/react-router'
-import { useNavigate } from '@tanstack/react-router'
+import { Box, Button, Grid, Stack, Typography } from '@mui/material'
+import {
+  createFileRoute,
+  FileRoutesByPath,
+  useNavigate,
+} from '@tanstack/react-router'
+import { object, string } from 'yup'
+
+import { PasswordInputControl } from '@/components/core/Inputs/Text/PasswordFieldControl'
+import { TextFieldControl } from '@/components/core/Inputs/Text/TextFieldControl'
 import { useNotificationsContext } from '@/components/providers/NotificationsProvider/useNotificationsContext'
+import { emailSchema } from '@/utils/validations'
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
 
 export const Route = createFileRoute(
   (ROUTES.LOGIN + '/') as keyof FileRoutesByPath
@@ -14,21 +22,26 @@ export const Route = createFileRoute(
   component: Login,
 })
 
+const schema = object().shape({
+  email: emailSchema.required('Un correo electrónico válido es requerido'),
+  password: string().required('Una contraseña es requerida'),
+})
+
 function Login() {
   const navigate = useNavigate()
   const { onOpenModalFullScreenLoading } = useNotificationsContext()
-  const [email, setEmail] = useState('')
-  const [password, setPassword] = useState('')
 
-  const debouncedEmail = useDebounce(email, 500)
-  const debouncedPassword = useDebounce(password, 500)
+  const { control, handleSubmit } = useForm({
+    defaultValues: {
+      email: '',
+      password: '',
+    },
+    mode: 'onBlur',
+    resolver: yupResolver(schema),
+  })
 
-  const isDirtyForm = useMemo(() => {
-    return debouncedEmail !== '' && debouncedPassword !== ''
-  }, [debouncedEmail, debouncedPassword])
-
-  const handleSubmit = async () => {
-    await new Promise(resolve => setTimeout(resolve, 500))
+  const onSubmit = async () => {
+    await new Promise(resolve => setTimeout(resolve, 200))
     onOpenModalFullScreenLoading()
     navigate({ to: ROUTES.DASHBOARD })
   }
@@ -54,20 +67,19 @@ function Login() {
           </Box>
 
           <Stack gap={'16px'} className="w-full">
-            <TextField
+            <TextFieldControl
               label={'Correo electrónico'}
               placeholder={'Ingresa tu correo electrónico'}
               name="email"
               tabIndex={1}
-              onChange={e => setEmail(e.target.value)}
+              control={control}
             />
-            <TextField
+            <PasswordInputControl
               label={'Contraseña'}
               placeholder={'Ingresa tu contraseña'}
               name="password"
               tabIndex={2}
-              id="input"
-              onChange={e => setPassword(e.target.value)}
+              control={control}
             />
             <Stack gap={'8px'}>
               <Button
@@ -76,8 +88,7 @@ function Login() {
                 type="submit"
                 tabIndex={3}
                 size="large"
-                disabled={!isDirtyForm}
-                onClick={handleSubmit}
+                onClick={handleSubmit(onSubmit)}
               >
                 Ingresar
               </Button>
